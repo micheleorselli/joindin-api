@@ -25,9 +25,8 @@ class TracksController extends ApiController
 
     public function editTrack($request, $db)
     {
-        // Check for login
-        if (! isset($request->user_id)) {
-            throw new Exception("You must be logged in to edit this track", 401);
+        if (false == ($request->getUserId())) {
+            throw new Exception("You must be logged in to edit a track", 401);
         }
 
         $track_id = $this->getItemId($request);
@@ -79,9 +78,8 @@ class TracksController extends ApiController
 
     public function deleteTrack($request, $db)
     {
-        // Check for login
-        if (! isset($request->user_id)) {
-            throw new Exception("You must be logged in to delete this track", 401);
+        if (false == ($request->getUserId())) {
+            throw new Exception("You must be logged in to delete a track", 401);
         }
 
         $track_id = $this->getItemId($request);
